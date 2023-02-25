@@ -9,7 +9,6 @@ function App() {
   const [gradientRotation, setGradientRotation] = useState(0);
   const [strokeWidth, setStrokeWidth] = useState(4);
   const [showCode, setShowCode] = useState(false);
-  const [inputColor, setInputColor] = useState('#000000');
   const [gradientList, setGradientList] = useState<Gradient[]>([
     { offset: 16, stopColor: '#CE9FFC' },
     { offset: 85, stopColor: '#7367F0' },
@@ -19,10 +18,12 @@ function App() {
     const value: number = parseInt(event.target.value);
     setPercentage(value);
   };
+  
   const handleSliderStroke = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value: number = parseInt(event.target.value);
     setStrokeWidth(value);
   };
+
   const handleGradientRotation = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
@@ -33,19 +34,22 @@ function App() {
   const handleShowCode = () => setShowCode((prev) => !prev);
 
   const handleNewColor = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { gradientIndex } = event.currentTarget.dataset;
+    const index = Number(gradientIndex);
     const { value } = event.target;
-    setInputColor(value);
+    const newList = [...gradientList];
+    newList[index].stopColor = value;
+
+    setGradientList(newList);
   };
 
   const handleAddNewColor = () => {
-    const colorToAdd: Gradient = { offset: 0, stopColor: inputColor };
+    const colorToAdd: Gradient = { offset: 0, stopColor: '#000000' };
     setGradientList((prev) => [...prev, colorToAdd]);
   };
 
   const handleDeleteGradient = (event: React.FormEvent<HTMLButtonElement>) => {
     const { gradientIndex } = event.currentTarget.dataset;
-    console.log(gradientIndex);
-
     const index = Number(gradientIndex);
     const newList = [...gradientList];
     newList.splice(index, 1);
@@ -67,20 +71,26 @@ function App() {
     <div className="app">
       <div className="color-list">
         <div className="color-list__form">
-          <input type="color" onChange={handleNewColor} value={inputColor} />
-          <button onClick={handleAddNewColor}>add</button>
+          <button onClick={handleAddNewColor}>Adicionar Cor</button>
         </div>
         <ul>
           {gradientList.map((gradient, index) => {
             return (
               <li key={`gradientItem-${index}`}>
-                <span style={{ backgroundColor: gradient.stopColor }} />
+                <input
+                  data-gradient-index={index}
+                  type="color"
+                  value={gradient.stopColor}
+                  onChange={handleNewColor}
+                />
+
                 <input
                   data-gradient-index={index}
                   onChange={handleOffsetEdit}
                   value={gradient.offset}
-                  type={'number'}
+                  type="range"
                 />
+
                 {gradient.stopColor}
                 <button
                   data-gradient-index={index}
@@ -101,6 +111,10 @@ function App() {
         gradients={gradientList}
         gradientRotation={gradientRotation}
       />
+
+      <button onClick={handleShowCode}>
+        {`${showCode ? `Ocultar` : `Exibir`} código`}
+      </button>
 
       <div className="">
         <label htmlFor="">Porcentagem</label>
@@ -132,9 +146,6 @@ function App() {
           value={gradientRotation}
         />
       </div>
-      <button onClick={handleShowCode}>{`${
-        showCode ? `Ocultar` : `Exibir`
-      } código`}</button>
     </div>
   );
 }
