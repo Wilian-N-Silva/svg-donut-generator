@@ -1,0 +1,70 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.donut__stroke {
+  transition: 0.9s;
+}
+
+.color-list ul {
+  display: flex;
+  gap: 16px;
+  width: 240px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.color-list ul li {
+  display: flex;
+  align-items: center;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  gap: 16px;
+
+  justify-content: space-between;
+  transition: 0.9s;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+
+.color-list ul li span {
+  width: 24px;
+  height: 16px;
+}
+
+.color-list ul li button {
+  padding: 0 12px;
+  display: none;
+  opacity: 0;
+}
+
+.color-list ul li:hover button {
+  display: block;
+  opacity: 1;
+}
