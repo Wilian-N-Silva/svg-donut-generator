@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import reactLogo from './assets/react.svg';
 import './App.css';
 import { Donut } from './components/Donut';
 import { Gradient } from './global/Types';
@@ -18,7 +17,7 @@ function App() {
     const value: number = parseInt(event.target.value);
     setPercentage(value);
   };
-  
+
   const handleSliderStroke = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value: number = parseInt(event.target.value);
     setStrokeWidth(value);
@@ -70,28 +69,28 @@ function App() {
   return (
     <div className="app">
       <div className="color-list">
-        <div className="color-list__form">
-          <button onClick={handleAddNewColor}>Adicionar Cor</button>
-        </div>
+        <button onClick={handleAddNewColor}>Adicionar Cor</button>
         <ul>
           {gradientList.map((gradient, index) => {
             return (
               <li key={`gradientItem-${index}`}>
+                <div className="field--color">
+                  <input
+                    data-gradient-index={index}
+                    type="color"
+                    value={gradient.stopColor}
+                    onChange={handleNewColor}
+                  />
+                  {gradient.stopColor}
+                </div>
                 <input
-                  data-gradient-index={index}
-                  type="color"
-                  value={gradient.stopColor}
-                  onChange={handleNewColor}
-                />
-
-                <input
+                  className="input--range"
                   data-gradient-index={index}
                   onChange={handleOffsetEdit}
                   value={gradient.offset}
                   type="range"
                 />
 
-                {gradient.stopColor}
                 <button
                   data-gradient-index={index}
                   onClick={handleDeleteGradient}
@@ -104,31 +103,36 @@ function App() {
         </ul>
       </div>
 
-      <Donut
-        percentage={percentage}
-        strokeWidth={strokeWidth}
-        showCode={showCode}
-        gradients={gradientList}
-        gradientRotation={gradientRotation}
-      />
+      <div className="chart-box">
+        <Donut
+          percentage={percentage}
+          strokeWidth={strokeWidth}
+          showCode={showCode}
+          gradients={gradientList}
+          gradientRotation={gradientRotation}
+        />
+      </div>
 
       <button onClick={handleShowCode}>
         {`${showCode ? `Ocultar` : `Exibir`} código`}
       </button>
 
-      <div className="">
+      <div className="field">
         <label htmlFor="">Porcentagem</label>
         <input
+          className="input--range"
           type="range"
           onChange={handleSlider}
           min={0}
           max={100}
           value={percentage}
         />
+        <span>{percentage}%</span>
       </div>
-      <div className="">
+      <div className="field">
         <label htmlFor="">Largura da linha</label>
         <input
+          className="input--range"
           type="range"
           onChange={handleSliderStroke}
           min={1}
@@ -136,9 +140,10 @@ function App() {
           value={strokeWidth}
         />
       </div>
-      <div className="">
+      <div className="field">
         <label htmlFor="">Rotação do Gradiente</label>
         <input
+          className="input--range"
           type="range"
           onChange={handleGradientRotation}
           min={0}

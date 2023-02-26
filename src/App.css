@@ -1,63 +1,73 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
 .app {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  margin: 0 auto;
+  align-items: center;
+  max-width: 280px;
+  gap: 32px;
+}
+
+.chart-box {
+  width: 280px;
 }
 
 .donut__stroke {
   transition: 0.9s;
 }
 
-.color-list ul {
+.color-list {
   display: flex;
-  gap: 16px;
-  width: 240px;
   flex-direction: column;
-  align-items: center;
+  gap: 32px;
 }
 
 .color-list ul li {
   display: flex;
-  align-items: center;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  background-color: rgba(0, 0, 0, 0.4);
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
   gap: 16px;
-
   justify-content: space-between;
-  transition: 0.9s;
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  align-self: center;
+  padding: 8px 12px;
+  border: 1px solid #363447;
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.87);
+  border-radius: 4px;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
+  transition: 0.4s;
 }
 
-.color-list ul li span {
-  width: 24px;
-  height: 16px;
+.color-list ul li button:hover {
+  background-color: #363447;
 }
 
-.color-list ul li button {
-  padding: 0 12px;
+.field--color {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.field--color input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  border: none;
+  height: 50px;
+  width: 50px;
+  background-color: transparent;
+}
+
+.field--color input::-webkit-color-swatch {
+  border-radius: 50%;
+}
+.field--color input::-moz-color-swatch {
+  border-radius: 50%;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
