@@ -71,3 +71,14 @@ button {
   flex-direction: column;
   align-items: center;
 }
+
+.brand {
+  margin-top: 64px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.brand img {
+  height: 32px;
+}

@@ -1,5 +1,8 @@
 import { useState } from 'react';
+import brandWilianDev from '/wilian_dev.svg';
+
 import './App.css';
+
 import { Donut } from './components/Donut';
 import { Gradient } from './global/Types';
 
@@ -151,6 +154,10 @@ function App() {
           value={gradientRotation}
         />
       </div>
+      <a href="https://wilian.dev" className="brand">
+        <span>Feito com ❤️ por</span>
+        <img src={brandWilianDev} />
+      </a>
     </div>
   );
 }
