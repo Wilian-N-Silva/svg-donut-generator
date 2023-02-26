@@ -86,13 +86,17 @@ function App() {
                   />
                   {gradient.stopColor}
                 </div>
-                <input
-                  className="input--range"
-                  data-gradient-index={index}
-                  onChange={handleOffsetEdit}
-                  value={gradient.offset}
-                  type="range"
-                />
+                <div className="field">
+                  <label htmlFor="">Offset</label>
+                  <input
+                    className="input--range"
+                    data-gradient-index={index}
+                    onChange={handleOffsetEdit}
+                    value={gradient.offset}
+                    type="range"
+                  />
+                  <span>{`${gradient.offset}%`}</span>
+                </div>
 
                 <button
                   data-gradient-index={index}
@@ -154,7 +158,12 @@ function App() {
           value={gradientRotation}
         />
       </div>
-      <a href="https://wilian.dev" className="brand">
+      <a
+        className="brand"
+        href="https://wilian.dev"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <span>Feito com ❤️ por</span>
         <img src={brandWilianDev} />
       </a>

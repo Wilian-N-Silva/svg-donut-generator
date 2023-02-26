@@ -75,7 +75,7 @@ button {
 .brand {
   margin-top: 64px;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   gap: 16px;
 }
 
