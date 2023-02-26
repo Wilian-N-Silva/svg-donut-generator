@@ -61,7 +61,7 @@ export function Donut({
       {showCode && (
         <textarea
           cols={30}
-          rows={10}
+          rows={30}
           value={ReactDOMServer.renderToString(svg)}
           readOnly
         ></textarea>

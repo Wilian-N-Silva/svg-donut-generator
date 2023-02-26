@@ -82,3 +82,15 @@ button {
 .brand img {
   height: 32px;
 }
+
+textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  width: 100%;
+  resize: vertical;
+  padding: 8px;
+  border: 1px solid #363447;
+  border-radius: 4px;
+}
